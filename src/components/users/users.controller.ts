@@ -9,7 +9,7 @@ export class UsersController {
   @Post()
   async create(@Req() req, @Res() res, @Body() createUsersDto: CreateUsersDto) {
       console.log(req)
-    const user = await this.usersService.create(createUsersDto, req.user);
+    const user = await this.usersService.create(createUsersDto);
     return res.status(HttpStatus.CREATED).json({
       statusCode: HttpStatus.CREATED,
       message: 'User Created Successfully',

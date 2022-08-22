@@ -10,9 +10,9 @@ import {
   FOREIGN_KEY_VIOLATION,
   UNIQUE_VIOLATION,
 } from 'src/database/constants/pg-error-codes';
-// import { QueryFailedError } from 'typeorm/error';
+import { QueryFailedError } from 'typeorm';
 
-// @Catch(QueryFailedError)
+@Catch(QueryFailedError)
 export class TypeORMExceptionFilter implements ExceptionFilter {
   private readonly logger = new Logger(TypeORMExceptionFilter.name);
 

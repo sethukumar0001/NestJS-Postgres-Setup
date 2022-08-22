@@ -1,17 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TypeormOrderByEnum } from 'src/common/constants/sort.enum';
+import { Repository } from 'typeorm';
 import { CreateUsersDto } from './dto/create-user.dto';
-import { UsersRepository } from './repositories/users.repository';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(UsersRepository)
-    private usersRepository: UsersRepository,
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
   ) {}
 
-  async create(createUsersDto: CreateUsersDto, user: any) {
+  async create(createUsersDto: CreateUsersDto) {
     const createUsersData: any = {
       ...createUsersDto,
     };
